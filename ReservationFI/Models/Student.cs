@@ -1,4 +1,4 @@
-﻿namespace ReservationFI
+﻿namespace ReservationFI.Models
 {
     public class Student
     {
@@ -6,6 +6,6 @@
         public int Id { get; set; }
         public User User { get; set; }
         public List<Course> Courses { get; set; }
-        public List<Reservation> Reservations { get; set; } 
+        public List<Reservation> Reservations { get; set; }
     }
 }

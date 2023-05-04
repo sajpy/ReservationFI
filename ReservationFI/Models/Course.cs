@@ -1,4 +1,4 @@
-﻿namespace ReservationFI
+﻿namespace ReservationFI.Models
 {
     public class Course
     {

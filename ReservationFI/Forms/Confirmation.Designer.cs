@@ -183,6 +183,7 @@
             // 
             // pictureBox7
             // 
+            this.pictureBox7.Image = global::ReservationFI.Properties.Resources.date22;
             this.pictureBox7.Location = new System.Drawing.Point(55, 111);
             this.pictureBox7.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pictureBox7.Name = "pictureBox7";
@@ -193,6 +194,7 @@
             // 
             // pictureBox6
             // 
+            this.pictureBox6.Image = global::ReservationFI.Properties.Resources.timestart;
             this.pictureBox6.Location = new System.Drawing.Point(55, 158);
             this.pictureBox6.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pictureBox6.Name = "pictureBox6";
@@ -203,6 +205,7 @@
             // 
             // pictureBox5
             // 
+            this.pictureBox5.Image = global::ReservationFI.Properties.Resources.timestop;
             this.pictureBox5.Location = new System.Drawing.Point(55, 209);
             this.pictureBox5.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pictureBox5.Name = "pictureBox5";
@@ -213,6 +216,7 @@
             // 
             // pictureBox3
             // 
+            this.pictureBox3.Image = global::ReservationFI.Properties.Resources.choose1;
             this.pictureBox3.Location = new System.Drawing.Point(55, 63);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pictureBox3.Name = "pictureBox3";
@@ -301,6 +305,7 @@
             this.Name = "Confirmation";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Confirmation";
+            this.Load += new System.EventHandler(this.Confirmation_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();

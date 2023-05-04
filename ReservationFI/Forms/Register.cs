@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using ReservationFI.Models;
 using ReservationFI.Repository;
 using System;
 using System.Collections.Generic;

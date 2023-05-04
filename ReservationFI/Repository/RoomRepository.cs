@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ReservationFI.Models;
 
 namespace ReservationFI.Repository
 {
@@ -36,6 +37,11 @@ namespace ReservationFI.Repository
         public IEnumerable<Room> GetAllRooms()
         {
             return _reservationDbContext.Rooms.ToList();
+        }
+
+        public int GetIdByRoomName(string roomName)
+        {
+            return _reservationDbContext.Rooms.First(x => x.RoomName == roomName).Id;
         }
 
         public void Update(Room room)

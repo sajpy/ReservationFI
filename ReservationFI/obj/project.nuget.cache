@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Y5QYn3IHbp/iwhB7ZS7kSU2itzHzzdp5AkKLpRdapJEmY2gNGQcy7HboXeW9M4TMPI8cBfR2PmZObojrEW2y8g==",
+  "dgSpecHash": "j3GOHZ582Y80dr4rag8UF9bFV8egkygrtIkdmnIsLz29HmFTn9OfmetFPdkq/9jgIrTeyf89n6RaP8Ata1b3TA==",
   "success": true,
-  "projectFilePath": "D:\\ReservationFI\\ReservationFI\\ReservationFI.csproj",
+  "projectFilePath": "D:\\School\\PV178\\ReservationFI\\ReservationFI\\ReservationFI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pavol\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\pavol\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

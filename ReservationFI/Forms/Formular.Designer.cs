@@ -77,6 +77,8 @@
             this.dpDate.Name = "dpDate";
             this.dpDate.Size = new System.Drawing.Size(168, 25);
             this.dpDate.TabIndex = 14;
+            this.dpDate.CloseUp += new System.EventHandler(this.dpDate_CloseUp);
+            this.dpDate.ValueChanged += new System.EventHandler(this.dpDate_ValueChanged);
             // 
             // lblBack
             // 
@@ -171,6 +173,7 @@
             this.btnCreateRes.TabIndex = 50;
             this.btnCreateRes.Text = "CREATE";
             this.btnCreateRes.UseVisualStyleBackColor = false;
+            this.btnCreateRes.Click += new System.EventHandler(this.btnCreateRes_Click);
             // 
             // lblClose
             // 
@@ -207,7 +210,6 @@
             this.cbStartingAt.DropDownHeight = 200;
             this.cbStartingAt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbStartingAt.DropDownWidth = 100;
-            this.cbStartingAt.Enabled = false;
             this.cbStartingAt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbStartingAt.Font = new System.Drawing.Font("Muni Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cbStartingAt.ForeColor = System.Drawing.SystemColors.HotTrack;
@@ -218,6 +220,7 @@
             this.cbStartingAt.Name = "cbStartingAt";
             this.cbStartingAt.Size = new System.Drawing.Size(168, 31);
             this.cbStartingAt.TabIndex = 53;
+            this.cbStartingAt.SelectedIndexChanged += new System.EventHandler(this.cbStartingAt_SelectedIndexChanged);
             // 
             // cbEndingAt
             // 
@@ -225,7 +228,6 @@
             this.cbEndingAt.DropDownHeight = 200;
             this.cbEndingAt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbEndingAt.DropDownWidth = 100;
-            this.cbEndingAt.Enabled = false;
             this.cbEndingAt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbEndingAt.Font = new System.Drawing.Font("Muni Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cbEndingAt.ForeColor = System.Drawing.SystemColors.HotTrack;
@@ -240,6 +242,7 @@
             // 
             // pictureBox7
             // 
+            this.pictureBox7.Image = global::ReservationFI.Properties.Resources.date22;
             this.pictureBox7.Location = new System.Drawing.Point(135, 200);
             this.pictureBox7.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pictureBox7.Name = "pictureBox7";
@@ -250,6 +253,7 @@
             // 
             // pictureBox6
             // 
+            this.pictureBox6.Image = global::ReservationFI.Properties.Resources.timestart;
             this.pictureBox6.Location = new System.Drawing.Point(135, 270);
             this.pictureBox6.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pictureBox6.Name = "pictureBox6";
@@ -260,6 +264,7 @@
             // 
             // pictureBox5
             // 
+            this.pictureBox5.Image = global::ReservationFI.Properties.Resources.timestop;
             this.pictureBox5.Location = new System.Drawing.Point(135, 340);
             this.pictureBox5.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pictureBox5.Name = "pictureBox5";
@@ -270,6 +275,7 @@
             // 
             // pictureBox3
             // 
+            this.pictureBox3.Image = global::ReservationFI.Properties.Resources.choose1;
             this.pictureBox3.Location = new System.Drawing.Point(135, 130);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pictureBox3.Name = "pictureBox3";

@@ -16,5 +16,10 @@ namespace ReservationFI
         {
             InitializeComponent();
         }
+
+        private void Confirmation_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
