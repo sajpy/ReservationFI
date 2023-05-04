@@ -1,37 +1,26 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
+﻿using Microsoft.Extensions.DependencyInjection;
 using ReservationFI.Models;
-using ReservationFI.Repository;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Net.WebSockets;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using ReservationFI.Repositories.IRepository;
 
 namespace ReservationFI
 {
     public partial class Register : Form
     {
-        private readonly UserRepository _userRepository;
 
-        public Register()
+        private readonly IServiceProvider _services;
+        private readonly IUserRepository _userRepository;
+
+
+        public Register(IServiceProvider services)
         {
+            _services = services;
+            _userRepository = services.GetRequiredService<IUserRepository>();
             InitializeComponent();
-
-            // Create an instance of UserRepository and store it as a private field
-            _userRepository = new UserRepository(new ReservationDbContext());
         }
-
-
 
         private void lblBack_Click(object sender, EventArgs e)
         {
-            Login loginForm = new Login();
+            Login loginForm = new(_services);
 
             this.Hide();
             loginForm.Closed += (s, args) => this.Close();
@@ -41,10 +30,9 @@ namespace ReservationFI
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            // TODO: Add validation, add success message, redirect to login after successful registration
 
             tbError.Visible = true;
-            tbError.ForeColor= Color.Red;
+            tbError.ForeColor = Color.Red;
 
             if (string.IsNullOrEmpty(tbFirstName.Text) || string.IsNullOrEmpty(tbLastName.Text) || string.IsNullOrEmpty(tbUsername.Text) || string.IsNullOrEmpty(tbPassword.Text) || string.IsNullOrEmpty(tbPasswordConfirm.Text))
             {

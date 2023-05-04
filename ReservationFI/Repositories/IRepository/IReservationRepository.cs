@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using ReservationFI.Models;
 
-namespace ReservationFI.IRepository
+namespace ReservationFI.Repositories.IRepository
 {
-    internal interface IReservationRepository
+    public interface IReservationRepository
     {
         IEnumerable<Reservation> GetAll();
         //Reservation? Get(int id);
@@ -15,6 +15,8 @@ namespace ReservationFI.IRepository
         void Update(Reservation reservation);
         void Delete(Reservation reservation);
         List<string> GetFreeTimes(string date, string roomName);
+        List<Reservation>  GetAllReservationsForUser(User user);
+        List<Reservation> GetAllReservationsWithRooms();
 
     }
 }

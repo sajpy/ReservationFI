@@ -159,6 +159,7 @@
             this.cbRooms.Name = "cbRooms";
             this.cbRooms.Size = new System.Drawing.Size(174, 31);
             this.cbRooms.TabIndex = 20;
+            this.cbRooms.SelectedIndexChanged += new System.EventHandler(this.cbRooms_SelectedIndexChanged);
             // 
             // btnCreateRes
             // 
@@ -166,7 +167,7 @@
             this.btnCreateRes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCreateRes.Font = new System.Drawing.Font("Muni Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnCreateRes.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnCreateRes.Location = new System.Drawing.Point(88, 448);
+            this.btnCreateRes.Location = new System.Drawing.Point(88, 457);
             this.btnCreateRes.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnCreateRes.Name = "btnCreateRes";
             this.btnCreateRes.Size = new System.Drawing.Size(350, 69);
@@ -195,7 +196,7 @@
             this.tbError.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbError.Font = new System.Drawing.Font("Muni Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.tbError.ForeColor = System.Drawing.Color.Red;
-            this.tbError.Location = new System.Drawing.Point(0, 411);
+            this.tbError.Location = new System.Drawing.Point(0, 416);
             this.tbError.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.tbError.Name = "tbError";
             this.tbError.ReadOnly = true;

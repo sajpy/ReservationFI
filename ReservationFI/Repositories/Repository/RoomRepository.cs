@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ReservationFI.Models;
 
-namespace ReservationFI.Repository
+namespace ReservationFI.Repositories.Repository
 {
     public class RoomRepository : IRepository.IRoomRepository
     {
@@ -49,6 +49,8 @@ namespace ReservationFI.Repository
             _reservationDbContext.Rooms.Update(room);
             _reservationDbContext.SaveChanges();
         }
+
+
 
     }
 }

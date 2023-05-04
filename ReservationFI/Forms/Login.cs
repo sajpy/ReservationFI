@@ -1,27 +1,19 @@
-﻿using Microsoft.Win32;
-using ReservationFI.IRepository;
-using ReservationFI.Repository;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using Microsoft.Extensions.DependencyInjection;
+using ReservationFI.Models;
+using ReservationFI.Repositories.IRepository;
 
 namespace ReservationFI
 {
     public partial class Login : Form
     {
-        private readonly UserRepository _userRepository;
-        // i need to inject the user repository here
+        private readonly IUserRepository _userRepository;
+        private readonly IServiceProvider _services;
 
-        public Login()
+        public Login(IServiceProvider services)
         {
+            _services = services;
+            _userRepository = services.GetRequiredService<IUserRepository>();
             InitializeComponent();
-            _userRepository = new UserRepository(new ReservationDbContext());
         }
 
         private void lblClose_Click(object sender, EventArgs e)
@@ -31,12 +23,6 @@ namespace ReservationFI
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            // check if lblUsername and lblPassword are not empty
-            // if they are empty, show a message box to the user
-            // else, check if the username and password exist in the database
-            // if they exist, show the main form
-            // else, show a message box to the user
-            
             tbError.Visible = true;
 
             if (string.IsNullOrEmpty(tbUsername.Text) || string.IsNullOrEmpty(tbPassword.Text))
@@ -45,7 +31,9 @@ namespace ReservationFI
             }
             else
             {
-                if(_userRepository.Login(tbUsername.Text, tbPassword.Text) == null)
+                User? user = _userRepository.Login(tbUsername.Text, tbPassword.Text);
+
+                if(user == null)
                 {
                     tbError.Text = "Username or password is incorrect";
                 }
@@ -53,28 +41,20 @@ namespace ReservationFI
                 {
                     tbError.Visible = false;
 
-                    // Hide the current form
                     this.Hide();
-                    // Show the new form
-                    var createOrManage = new CreateOrManage();
+                    Form createOrManage = new CreateOrManage(_services);
                     createOrManage.Closed += (s, args) => this.Close();
                     createOrManage.Show();
                 }
-
             }
         }
 
         private void btnCreateAccount_Click(object sender, EventArgs e)
         {
-
-            // Hide the current form
             this.Hide();
-
-            // Show the new form
-            var registerForm = new Register();
+            var registerForm = new Register(_services);
             registerForm.Closed += (s, args) => this.Close();
             registerForm.Show();
-
         }
     }
 }

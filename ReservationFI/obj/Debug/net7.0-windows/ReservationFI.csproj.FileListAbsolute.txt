@@ -118,13 +118,11 @@ D:\School\PV178\ReservationFI\ReservationFI\obj\Debug\net7.0-windows\Reservation
 D:\School\PV178\ReservationFI\ReservationFI\obj\Debug\net7.0-windows\ReservationFI.Confirmation.resources
 D:\School\PV178\ReservationFI\ReservationFI\obj\Debug\net7.0-windows\ReservationFI.CreateOrManage.resources
 D:\School\PV178\ReservationFI\ReservationFI\obj\Debug\net7.0-windows\ReservationFI.Delete.resources
-D:\School\PV178\ReservationFI\ReservationFI\obj\Debug\net7.0-windows\ReservationFI.Form1.resources
 D:\School\PV178\ReservationFI\ReservationFI\obj\Debug\net7.0-windows\ReservationFI.Formular.resources
 D:\School\PV178\ReservationFI\ReservationFI\obj\Debug\net7.0-windows\ReservationFI.Login.resources
 D:\School\PV178\ReservationFI\ReservationFI\obj\Debug\net7.0-windows\ReservationFI.Properties.Resources.resources
 D:\School\PV178\ReservationFI\ReservationFI\obj\Debug\net7.0-windows\ReservationFI.Register.resources
 D:\School\PV178\ReservationFI\ReservationFI\obj\Debug\net7.0-windows\ReservationFI.ResManager.resources
-D:\School\PV178\ReservationFI\ReservationFI\obj\Debug\net7.0-windows\ReservationFI.UserControl1.resources
 D:\School\PV178\ReservationFI\ReservationFI\obj\Debug\net7.0-windows\ReservationFI.csproj.GenerateResource.cache
 D:\School\PV178\ReservationFI\ReservationFI\obj\Debug\net7.0-windows\ReservationFI.GeneratedMSBuildEditorConfig.editorconfig
 D:\School\PV178\ReservationFI\ReservationFI\obj\Debug\net7.0-windows\ReservationFI.AssemblyInfoInputs.cache
@@ -136,3 +134,5 @@ D:\School\PV178\ReservationFI\ReservationFI\obj\Debug\net7.0-windows\refint\Rese
 D:\School\PV178\ReservationFI\ReservationFI\obj\Debug\net7.0-windows\ReservationFI.pdb
 D:\School\PV178\ReservationFI\ReservationFI\obj\Debug\net7.0-windows\ReservationFI.genruntimeconfig.cache
 D:\School\PV178\ReservationFI\ReservationFI\obj\Debug\net7.0-windows\ref\ReservationFI.dll
+D:\School\PV178\ReservationFI\ReservationFI\bin\Debug\net7.0-windows\Microsoft.Extensions.FileProviders.Abstractions.dll
+D:\School\PV178\ReservationFI\ReservationFI\bin\Debug\net7.0-windows\Microsoft.Extensions.Hosting.Abstractions.dll

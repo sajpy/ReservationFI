@@ -13,9 +13,6 @@
     <Compile Update="Forms\Delete.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="Forms\Formular.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -27,9 +24,6 @@
     </Compile>
     <Compile Update="Forms\ResManager.cs">
       <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="UserControl1.cs">
-      <SubType>UserControl</SubType>
     </Compile>
   </ItemGroup>
 </Project>

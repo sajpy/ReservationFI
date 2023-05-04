@@ -1,34 +1,33 @@
-﻿using ReservationFI.IRepository;
+﻿using Microsoft.Extensions.DependencyInjection;
 using ReservationFI.Models;
-using ReservationFI.Repository;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
+using ReservationFI.Repositories.IRepository;
 using System.Data;
-using static Azure.Core.HttpHeader;
-
 
 namespace ReservationFI
 {
     public partial class Formular : Form
     {
-
         private readonly IRoomRepository _roomRepository;
         private readonly IReservationRepository _reservationRepository;
+        private readonly IUserRepository _userRepository;
         private bool _isDateChanged = false;
-        
+        private readonly IServiceProvider _services;
 
-        public Formular()
+        public Formular(IServiceProvider services)
         {
+            _services = services;
+            
+            _reservationRepository = _services.GetRequiredService<IReservationRepository>();
+            _userRepository = _services.GetRequiredService<IUserRepository>();
+            _roomRepository = _services.GetRequiredService<IRoomRepository>();
+
             InitializeComponent();
-            _roomRepository = new RoomRepository(new ReservationDbContext());
-            _reservationRepository = new ReservationRepository(new ReservationDbContext());
+
         }
 
         private void lblBack_Click(object sender, EventArgs e)
         {
-            CreateOrManage createOrManage = new();
+            Form createOrManage = new CreateOrManage(_services);
 
             this.Hide();
             createOrManage.Closed += (s, args) => this.Close();
@@ -42,37 +41,27 @@ namespace ReservationFI
 
         private void Formular_Load(object sender, EventArgs e)
         {
-            cbRooms.DataSource = _roomRepository.GetAllRooms().Select(x => x.RoomName).ToList();
             dpDate.MinDate= DateTime.Now;
 
+            cbStartingAt.Enabled = true;
             cbEndingAt.Enabled = false;
 
-            dpDate.CustomFormat = " ";
             dpDate.Format = DateTimePickerFormat.Custom;
+            dpDate.CustomFormat = "dd/MM/yyyy";
+
+            cbRooms.DataSource = _roomRepository.GetAllRooms().Select(x => x.RoomName).ToList();
         }
 
         private void dpDate_ValueChanged(object sender, EventArgs e)
         {
-            dpDate.CustomFormat = "dd/MM/yyyy";
             dpDate.ValueChanged -= dpDate_ValueChanged;
-            cbStartingAt.Enabled = false;
 
             cbStartingAt.Items.Clear();
             cbEndingAt.Items.Clear();
 
             if (_isDateChanged)
             {
-                tbError.Visible = true;
-
-                List<string> freeTimes = _reservationRepository.GetFreeTimes(dpDate.Text, cbRooms.Text);
-
-                foreach (var item in freeTimes)
-                {
-                    cbStartingAt.Items.Add(item);
-                    cbEndingAt.Items.Add(item);
-                }
-
-                cbStartingAt.Enabled = true;
+                UpdatingCheckboxes();
             }
         }
 
@@ -90,6 +79,7 @@ namespace ReservationFI
             if (cbRooms.SelectedItem == null || cbStartingAt.SelectedItem == null || cbEndingAt.SelectedItem == null)
             {
                 tbError.Visible = true;
+                tbError.ForeColor = Color.Red;
                 tbError.Text = "Please fill all the fields!";
             }
 
@@ -98,6 +88,7 @@ namespace ReservationFI
                 tbError.Visible = true;
 
                 int roomId = _roomRepository.GetIdByRoomName(cbRooms.SelectedItem.ToString());
+                User user = _userRepository.GetCurrentUser();
 
                 Reservation reservation = new()
                 {
@@ -105,28 +96,68 @@ namespace ReservationFI
                     StartTime = cbStartingAt.Text,
                     EndTime = cbEndingAt.Text,
                     RoomId = roomId,
-                    UserId = 3,
+                    UserId = user.Id,
+                    RoomName = cbRooms.Text
                 };
 
-                _reservationRepository.Add(reservation);
-                tbError.ForeColor = Color.Green;
 
-                tbError.Text = dpDate.Text;
+                var confirmation = new Confirmation(_services, reservation);
+                this.SuspendLayout();
+                confirmation.ShowDialog(this);
+
+                UpdatingCheckboxes();
             }
         }
 
         private void cbStartingAt_SelectedIndexChanged(object sender, EventArgs e)
         {
+            cbEndingAt.Items.Clear();
+
             Array values = Enum.GetValues(typeof(Times.TimesEnum));
 
-            //foreach (Times.TimesEnum item in values)
-            //{
-            //    cbEndingAt.Items.Add(item.GetDescription());
-            //}
+            List<string> allTimes = new();
+            foreach (Times.TimesEnum item in values)
+            {
+                allTimes.Add(item.GetDescription());
+            }
 
+            cbEndingAt.Items.Add(allTimes[allTimes.IndexOf((string)cbStartingAt.SelectedItem) + 1]);
+            cbEndingAt.SelectedIndex = 0;
 
-            //cbEndingAt.SelectedIndex = cbStartingAt.SelectedIndex + 1;
+            cbEndingAt.Enabled = false;
+        }
 
+        private void UpdatingCheckboxes()
+        {
+            cbStartingAt.Items.Clear();
+            cbEndingAt.Items.Clear();
+            tbError.Visible = true;
+
+            List<string> freeTimes = _reservationRepository.GetFreeTimes(dpDate.Text, cbRooms.Text);
+
+            foreach (var item in freeTimes)
+            {
+                cbStartingAt.Items.Add(item);
+            }
+
+            cbStartingAt.Items.RemoveAt(cbStartingAt.Items.Count - 1);
+
+            if (cbStartingAt.Items.Count == 0)
+            {
+                cbStartingAt.Enabled = false;
+                tbError.ForeColor = Color.Red;
+                tbError.Text = "There are no free reservations for this date!";
+            }
+            else
+            {
+                tbError.Clear();
+                cbStartingAt.Enabled = true;
+            }
+        }
+
+        private void cbRooms_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdatingCheckboxes();
         }
     }
 }

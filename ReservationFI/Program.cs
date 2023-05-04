@@ -1,4 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using ReservationFI.Repositories.IRepository;
+using ReservationFI.Repositories.Repository;
 
 namespace ReservationFI
 {
@@ -10,11 +13,16 @@ namespace ReservationFI
         [STAThread]
         static void Main()
         {
-            ApplicationConfiguration.Initialize();
-            var dbContext = new ReservationDbContext();
-            Application.Run(new Login());
+            var services = new ServiceCollection();
+            services.AddDbContext<ReservationDbContext>();
+            services.AddSingleton<IUserRepository, UserRepository>();
+            services.AddSingleton<IRoomRepository, RoomRepository>();
+            services.AddSingleton<IReservationRepository, ReservationRepository>();
 
-            dbContext.Database.GetDbConnection().Close();
+            var login = new Login(services.BuildServiceProvider());
+
+            Application.Run(login);
+
         }
     }
 }

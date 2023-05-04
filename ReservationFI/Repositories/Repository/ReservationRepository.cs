@@ -1,14 +1,15 @@
-﻿using ReservationFI.IRepository;
-using ReservationFI.Models;
+﻿using ReservationFI.Models;
+using ReservationFI.Repositories.IRepository;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
-namespace ReservationFI.Repository
+namespace ReservationFI.Repositories.Repository
 {
     public class ReservationRepository : IReservationRepository
     {
@@ -30,8 +31,6 @@ namespace ReservationFI.Repository
             _reservationDbContext.SaveChanges();
         }
 
-
-
         public IEnumerable<Reservation> GetAll()
         {
             return _reservationDbContext.Reservations.ToList();
@@ -41,9 +40,6 @@ namespace ReservationFI.Repository
         {
             throw new NotImplementedException();
         }
-
-
-
 
         public List<string> GetFreeTimes(string date, string roomName)
         {
@@ -64,6 +60,34 @@ namespace ReservationFI.Repository
             return freeTimes;
         }
 
+        public List<Reservation> GetAllReservationsForUser(User user)
+        {
+            return _reservationDbContext.Reservations.Where(x => x.UserId == user.Id).ToList();
+        }
+
+        public List<Reservation> GetAllReservationsWithRooms()
+        {
+            return _reservationDbContext.Reservations
+                .Join(_reservationDbContext.Rooms, r => r.RoomId, ro => ro.Id, (r, ro) => new
+                {
+                    r.Id,
+                    r.RoomId,                   
+                    ro.RoomName,
+                    r.StartDate,
+                    r.StartTime,
+                    r.EndTime
+                })
+                .Select(x => new Reservation
+                {
+                    Id = x.Id,
+                    RoomId = x.RoomId,
+                    RoomName = x.RoomName,
+                    StartDate = x.StartDate,
+                    StartTime = x.StartTime,
+                    EndTime = x.EndTime
+                })
+                .ToList();
+        }
 
     }
 }

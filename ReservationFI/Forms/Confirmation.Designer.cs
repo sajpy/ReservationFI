@@ -67,6 +67,7 @@
             this.lblClose.Size = new System.Drawing.Size(20, 24);
             this.lblClose.TabIndex = 53;
             this.lblClose.Text = "x";
+            this.lblClose.Click += new System.EventHandler(this.lblClose_Click);
             // 
             // flowLayoutPanel1
             // 
@@ -180,6 +181,7 @@
             this.btnConfirmRes.TabIndex = 72;
             this.btnConfirmRes.Text = "CONFIRM";
             this.btnConfirmRes.UseVisualStyleBackColor = false;
+            this.btnConfirmRes.Click += new System.EventHandler(this.btnConfirmRes_Click);
             // 
             // pictureBox7
             // 

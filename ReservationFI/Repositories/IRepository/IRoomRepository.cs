@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using ReservationFI.Models;
 
-namespace ReservationFI.IRepository
+namespace ReservationFI.Repositories.IRepository
 {
-    internal interface IRoomRepository
+    public interface IRoomRepository
     {
         IEnumerable<string> GetAll();
         Room? Get(int id);

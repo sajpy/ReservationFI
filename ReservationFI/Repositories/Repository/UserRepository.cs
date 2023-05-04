@@ -1,12 +1,12 @@
-﻿using ReservationFI.IRepository;
-using ReservationFI.Models;
+﻿using ReservationFI.Models;
+using ReservationFI.Repositories.IRepository;
 
-
-namespace ReservationFI.Repository
+namespace ReservationFI.Repositories.Repository
 {
     public class UserRepository : IUserRepository
     {
         private readonly ReservationDbContext _reservationDbContext;
+        private User? _currentUser;
         public UserRepository(ReservationDbContext reservationDbContext)
         {
             _reservationDbContext = reservationDbContext;
@@ -33,6 +33,11 @@ namespace ReservationFI.Repository
             return _reservationDbContext.Users.SingleOrDefault(x => x.Username == username);
         }
 
+        public int GetId(User user)
+        {
+            return _reservationDbContext.Users.First(x => x.Username == user.Username).Id;
+        }
+
         public User? GetByFirstAndLastName(string firstName, string lastName)
         {
             return _reservationDbContext.Users.SingleOrDefault(x => x.FirstName == firstName && x.LastName == lastName);
@@ -50,7 +55,13 @@ namespace ReservationFI.Repository
 
         public User? Login(string username, string password)
         {
-            return _reservationDbContext.Users.SingleOrDefault(x => x.Username == username && x.UserPassword == password);
+            _currentUser = _reservationDbContext.Users.SingleOrDefault(x => x.Username == username && x.UserPassword == password);
+            return _currentUser;
+        }
+
+        public User GetCurrentUser()
+        {
+            return _currentUser;
         }
     }
 }
