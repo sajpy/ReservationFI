@@ -1,20 +1,13 @@
-﻿using ReservationFI.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using ReservationFI.Models;
 using ReservationFI.Repositories.IRepository;
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ReservationFI.Repositories.Repository
 {
     public class ReservationRepository : IReservationRepository
     {
         private readonly ReservationDbContext _reservationDbContext;
-        private readonly RoomRepository _roomRepository;
         public ReservationRepository(ReservationDbContext reservationDbContext)
         {
             _reservationDbContext = reservationDbContext;
@@ -27,9 +20,16 @@ namespace ReservationFI.Repositories.Repository
         }
         public void Delete(Reservation reservation)
         {
+            var existingReservation = _reservationDbContext.Reservations.Find(reservation.Id);
+            if (existingReservation != null)
+            {
+                _reservationDbContext.Entry(existingReservation).State = EntityState.Detached;
+            }
+
             _reservationDbContext.Reservations.Remove(reservation);
             _reservationDbContext.SaveChanges();
         }
+
 
         public IEnumerable<Reservation> GetAll()
         {
@@ -60,34 +60,53 @@ namespace ReservationFI.Repositories.Repository
             return freeTimes;
         }
 
+        public List<Reservation> GetAllReservations()
+        {
+            var reservationsWithRooms = _reservationDbContext.Reservations
+                .Join(_reservationDbContext.Rooms, res => res.RoomId, room => room.Id, (res, room) => new
+                {
+                    Res = res,
+                    Room = room
+                })
+                .Join(_reservationDbContext.Users, user => user.Res.UserId, user2 => user2.Id, (user, user2) => new Reservation
+                {
+                    Id = user.Res.Id,
+                    RoomId = user.Res.RoomId,
+                    RoomName = user.Room.RoomName,
+                    StartDate = user.Res.StartDate,
+                    StartTime = user.Res.StartTime,
+                    EndTime = user.Res.EndTime,
+                    UserId = user.Res.UserId,
+                    UserFirstName = user2.FirstName,
+                    UserLastName = user2.LastName,
+                })
+                .OrderBy(x => x.StartDate)
+                .ThenBy(x => x.StartTime)
+                .ToList();
+
+            return reservationsWithRooms;
+
+        }
+
         public List<Reservation> GetAllReservationsForUser(User user)
         {
-            return _reservationDbContext.Reservations.Where(x => x.UserId == user.Id).ToList();
+            return GetAllReservations().Where(x => x.UserId == user.Id).ToList();
         }
 
         public List<Reservation> GetAllReservationsWithRooms()
         {
             return _reservationDbContext.Reservations
-                .Join(_reservationDbContext.Rooms, r => r.RoomId, ro => ro.Id, (r, ro) => new
+                .Join(_reservationDbContext.Rooms, r => r.RoomId, ro => ro.Id, (r, ro) => new Reservation 
                 {
-                    r.Id,
-                    r.RoomId,                   
-                    ro.RoomName,
-                    r.StartDate,
-                    r.StartTime,
-                    r.EndTime
+                    Id = r.Id,
+                    RoomId = r.RoomId,
+                    RoomName = ro.RoomName,
+                    StartDate = r.StartDate,
+                    StartTime = r.StartTime,
+                    EndTime = r.EndTime
                 })
-                .Select(x => new Reservation
-                {
-                    Id = x.Id,
-                    RoomId = x.RoomId,
-                    RoomName = x.RoomName,
-                    StartDate = x.StartDate,
-                    StartTime = x.StartTime,
-                    EndTime = x.EndTime
-                })
+
                 .ToList();
         }
-
     }
 }

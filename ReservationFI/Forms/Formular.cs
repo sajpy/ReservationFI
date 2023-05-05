@@ -97,9 +97,10 @@ namespace ReservationFI
                     EndTime = cbEndingAt.Text,
                     RoomId = roomId,
                     UserId = user.Id,
-                    RoomName = cbRooms.Text
+                    RoomName = cbRooms.Text,
+                    UserFirstName = user.FirstName,
+                    UserLastName = user.LastName
                 };
-
 
                 var confirmation = new Confirmation(_services, reservation);
                 this.SuspendLayout();

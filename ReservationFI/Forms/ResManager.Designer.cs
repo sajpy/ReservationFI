@@ -37,6 +37,7 @@
             this.CheckBox = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.btnDeleteRes = new System.Windows.Forms.Button();
             this.tbError = new System.Windows.Forms.TextBox();
+            this.btnExport = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgReservations)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,7 +48,7 @@
             this.lblBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblBack.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblBack.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lblBack.Location = new System.Drawing.Point(6, 9);
+            this.lblBack.Location = new System.Drawing.Point(101, 9);
             this.lblBack.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblBack.Name = "lblBack";
             this.lblBack.Size = new System.Drawing.Size(22, 24);
@@ -61,7 +62,7 @@
             this.lblClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblClose.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblClose.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lblClose.Location = new System.Drawing.Point(496, 6);
+            this.lblClose.Location = new System.Drawing.Point(627, 9);
             this.lblClose.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblClose.Name = "lblClose";
             this.lblClose.Size = new System.Drawing.Size(20, 24);
@@ -103,9 +104,10 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgReservations.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgReservations.GridColor = System.Drawing.Color.Black;
-            this.dgReservations.Location = new System.Drawing.Point(41, 40);
+            this.dgReservations.Location = new System.Drawing.Point(13, 40);
             this.dgReservations.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.dgReservations.Name = "dgReservations";
+            this.dgReservations.ReadOnly = true;
             this.dgReservations.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgReservations.RowHeadersVisible = false;
             this.dgReservations.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -113,7 +115,7 @@
             this.dgReservations.ShowCellToolTips = false;
             this.dgReservations.ShowEditingIcon = false;
             this.dgReservations.ShowRowErrors = false;
-            this.dgReservations.Size = new System.Drawing.Size(443, 404);
+            this.dgReservations.Size = new System.Drawing.Size(724, 364);
             this.dgReservations.TabIndex = 54;
             // 
             // CheckBox
@@ -124,6 +126,7 @@
             this.CheckBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CheckBox.HeaderText = "";
             this.CheckBox.Name = "CheckBox";
+            this.CheckBox.ReadOnly = true;
             this.CheckBox.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.CheckBox.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.CheckBox.TrueValue = "true";
@@ -137,7 +140,7 @@
             this.btnDeleteRes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDeleteRes.Font = new System.Drawing.Font("Muni Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnDeleteRes.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.btnDeleteRes.Location = new System.Drawing.Point(146, 496);
+            this.btnDeleteRes.Location = new System.Drawing.Point(101, 486);
             this.btnDeleteRes.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnDeleteRes.Name = "btnDeleteRes";
             this.btnDeleteRes.Size = new System.Drawing.Size(233, 58);
@@ -152,7 +155,7 @@
             this.tbError.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbError.Font = new System.Drawing.Font("Muni Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.tbError.ForeColor = System.Drawing.Color.Red;
-            this.tbError.Location = new System.Drawing.Point(0, 462);
+            this.tbError.Location = new System.Drawing.Point(112, 462);
             this.tbError.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.tbError.Name = "tbError";
             this.tbError.ReadOnly = true;
@@ -161,12 +164,30 @@
             this.tbError.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tbError.Visible = false;
             // 
+            // btnExport
+            // 
+            this.btnExport.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnExport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnExport.FlatAppearance.BorderSize = 0;
+            this.btnExport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExport.Font = new System.Drawing.Font("Muni Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnExport.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.btnExport.Location = new System.Drawing.Point(414, 486);
+            this.btnExport.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(233, 58);
+            this.btnExport.TabIndex = 75;
+            this.btnExport.Text = "EXPORT ALL";
+            this.btnExport.UseVisualStyleBackColor = false;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
             // ResManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(525, 565);
+            this.ClientSize = new System.Drawing.Size(750, 560);
+            this.Controls.Add(this.btnExport);
             this.Controls.Add(this.tbError);
             this.Controls.Add(this.btnDeleteRes);
             this.Controls.Add(this.dgReservations);
@@ -191,5 +212,6 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn CheckBox;
         private System.Windows.Forms.Button btnDeleteRes;
         private System.Windows.Forms.TextBox tbError;
+        private Button btnExport;
     }
 }

@@ -50,7 +50,7 @@
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(88, 238);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(87, 238);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(350, 1);
@@ -59,7 +59,7 @@
             // flowLayoutPanel2
             // 
             this.flowLayoutPanel2.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(88, 315);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(87, 315);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(350, 1);
@@ -70,7 +70,7 @@
             this.tbUsername.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbUsername.Font = new System.Drawing.Font("Rockwell", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.tbUsername.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.tbUsername.Location = new System.Drawing.Point(147, 203);
+            this.tbUsername.Location = new System.Drawing.Point(146, 203);
             this.tbUsername.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.tbUsername.Name = "tbUsername";
             this.tbUsername.Size = new System.Drawing.Size(286, 18);
@@ -81,7 +81,7 @@
             this.tbPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbPassword.Font = new System.Drawing.Font("Rockwell", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.tbPassword.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.tbPassword.Location = new System.Drawing.Point(147, 280);
+            this.tbPassword.Location = new System.Drawing.Point(146, 280);
             this.tbPassword.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.Size = new System.Drawing.Size(286, 18);
@@ -92,7 +92,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Muni Bold", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(144, 179);
+            this.label2.Location = new System.Drawing.Point(143, 179);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(71, 13);
@@ -103,7 +103,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Muni Bold", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(144, 256);
+            this.label3.Location = new System.Drawing.Point(143, 256);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(71, 13);
@@ -116,7 +116,7 @@
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.Font = new System.Drawing.Font("Muni Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnLogin.ForeColor = System.Drawing.Color.White;
-            this.btnLogin.Location = new System.Drawing.Point(88, 373);
+            this.btnLogin.Location = new System.Drawing.Point(87, 373);
             this.btnLogin.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(350, 69);
@@ -131,7 +131,7 @@
             this.btnCreateAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCreateAccount.Font = new System.Drawing.Font("Muni Bold", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnCreateAccount.ForeColor = System.Drawing.Color.White;
-            this.btnCreateAccount.Location = new System.Drawing.Point(175, 501);
+            this.btnCreateAccount.Location = new System.Drawing.Point(174, 501);
             this.btnCreateAccount.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnCreateAccount.Name = "btnCreateAccount";
             this.btnCreateAccount.Size = new System.Drawing.Size(175, 46);
@@ -144,7 +144,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Muni Bold", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(248, 462);
+            this.label1.Location = new System.Drawing.Point(247, 462);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(25, 16);
@@ -157,7 +157,7 @@
             this.lblClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblClose.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblClose.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lblClose.Location = new System.Drawing.Point(496, 6);
+            this.lblClose.Location = new System.Drawing.Point(495, 6);
             this.lblClose.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblClose.Name = "lblClose";
             this.lblClose.Size = new System.Drawing.Size(20, 24);
@@ -171,7 +171,7 @@
             this.tbError.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbError.Font = new System.Drawing.Font("Muni Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.tbError.ForeColor = System.Drawing.Color.Red;
-            this.tbError.Location = new System.Drawing.Point(1, 335);
+            this.tbError.Location = new System.Drawing.Point(0, 335);
             this.tbError.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.tbError.Name = "tbError";
             this.tbError.ReadOnly = true;
@@ -183,7 +183,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::ReservationFI.Properties.Resources.fi_logo;
-            this.pictureBox1.Location = new System.Drawing.Point(146, 17);
+            this.pictureBox1.Location = new System.Drawing.Point(145, 17);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(233, 138);
@@ -194,7 +194,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = global::ReservationFI.Properties.Resources._lock;
-            this.pictureBox3.Location = new System.Drawing.Point(88, 256);
+            this.pictureBox3.Location = new System.Drawing.Point(87, 256);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(50, 52);
@@ -205,7 +205,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::ReservationFI.Properties.Resources.user_logo1;
-            this.pictureBox2.Location = new System.Drawing.Point(88, 179);
+            this.pictureBox2.Location = new System.Drawing.Point(87, 179);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(50, 52);

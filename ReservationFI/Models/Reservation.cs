@@ -23,6 +23,11 @@ namespace ReservationFI.Models
         public string StartTime { get; set; }
         public string EndTime { get; set; }
 
+        [NotMapped]
+        public string UserFirstName { get; set; }
+        [NotMapped]
+        public string UserLastName { get; set; }
+
         //public List<Student> Students { get; set; }
 
     }

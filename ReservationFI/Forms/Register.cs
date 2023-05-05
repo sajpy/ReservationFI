@@ -61,8 +61,9 @@ namespace ReservationFI
                         {
                             FirstName = tbFirstName.Text,
                             LastName = tbLastName.Text,
-                            Username = tbUsername.Text,
+                            UserName = tbUsername.Text,
                             UserPassword = tbPassword.Text,
+                            IsAdmin = false
                             //IsTeacher = chbTeacher.Checked,
                             //IsStudent = chbStudent.Checked
                         };

@@ -1,8 +1,11 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.VisualBasic.ApplicationServices;
 using ReservationFI.Models;
 using ReservationFI.Repositories.IRepository;
-using System.Globalization;
+using System.Reflection;
+using System.Text.Encodings.Web;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using System.Text.Unicode;
 
 namespace ReservationFI
 {
@@ -10,10 +13,12 @@ namespace ReservationFI
     {
         private readonly IServiceProvider _services;
         private readonly IReservationRepository _reservationRepository;
+        private readonly IUserRepository _userRepository;
         public ResManager(IServiceProvider services)
         {
             _services = services;
             _reservationRepository = _services.GetRequiredService<IReservationRepository>();
+            _userRepository = _services.GetRequiredService<IUserRepository>();
             InitializeComponent();
         }
 
@@ -33,57 +38,81 @@ namespace ReservationFI
 
         private void ResManager_Load(object sender, EventArgs e)
         {
-            var reservations = _reservationRepository.GetAllReservationsWithRooms()
-                .Select(r => new Reservation
-                {
-                    Id = r.Id,
-                    RoomId = r.RoomId,
-                    RoomName = r.RoomName,
-                    StartDate = r.StartDate,
-                    StartTime = r.StartTime,
-                    EndTime = r.EndTime
-                })
-                .OrderBy(r => r.StartDate)
-                .ThenBy(r => r.StartTime)
-                .ToList();
+            tbError.Visible = false;
+            User currentUser = _userRepository.GetCurrentUser();
+
+            List<Reservation> reservations;
+
+            if (currentUser.IsAdmin)
+            {
+                reservations = _reservationRepository.GetAllReservations();
+            }
+            else
+            {
+                reservations = _reservationRepository.GetAllReservationsForUser(currentUser);
+            }
 
             dgReservations.DataSource = reservations;
 
-            // Hide the columns you don't want to show
             dgReservations.Columns["Id"].Visible = false;
             dgReservations.Columns["RoomId"].Visible = false;
             dgReservations.Columns["UserId"].Visible = false;
 
-            //foreach (DataGridViewColumn col in dgReservations.Columns)
-            //{
-            //    col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            //}
+            dgReservations.Columns[0].Visible = false;
 
-            //dgReservations.Columns[1].ReadOnly = true;
             dgReservations.Columns[4].HeaderText = "ROOM";
 
-            //dgReservations.Columns[2].ReadOnly = true;
             dgReservations.Columns[5].HeaderText = "DATE";
 
-
-            //dgReservations.Columns[3].ReadOnly = true;
             dgReservations.Columns[6].HeaderText = "START";
 
             dgReservations.Columns[7].HeaderText = "END";
+
+            dgReservations.Columns[8].HeaderText = "USER";
+            dgReservations.Columns[9].HeaderText = "";
         }
 
         private void btnDeleteRes_Click(object sender, EventArgs e)
         {
-
+            tbError.Visible = true;
+            int selectedRowCount = dgReservations.SelectedRows.Count;
             foreach (DataGridViewRow row in dgReservations.SelectedRows)
             {
                 Reservation res = (Reservation)row.DataBoundItem;
-
                 _reservationRepository.Delete(res);
             }
 
-            this.ResManager_Load(this, e);
+            tbError.ForeColor = Color.Green;
+            tbError.Text = "Deleted " + selectedRowCount + " reservation/s";
 
+            this.ResManager_Load(this, e);
+        }
+
+
+        private async void btnExport_Click(object sender, EventArgs e)
+        {
+            tbError.Visible = true;
+
+            var reservations = (List<Reservation>)dgReservations.DataSource;
+
+            string fileName = "reservations.json";
+
+            string? executableLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+
+            string filePath = Path.Combine(executableLocation!, fileName);
+
+            var options1 = new JsonSerializerOptions
+            {
+                Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+                WriteIndented = true
+            };
+
+            await using FileStream createStream = File.Create(filePath);
+
+            await JsonSerializer.SerializeAsync(createStream, reservations, options1);
+
+            tbError.ForeColor = Color.Green;
+            tbError.Text = "Exported!";
         }
     }
 }

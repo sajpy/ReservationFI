@@ -30,12 +30,12 @@ namespace ReservationFI.Repositories.Repository
 
         public User? GetByUsername(string username)
         {
-            return _reservationDbContext.Users.SingleOrDefault(x => x.Username == username);
+            return _reservationDbContext.Users.SingleOrDefault(x => x.UserName == username);
         }
 
         public int GetId(User user)
         {
-            return _reservationDbContext.Users.First(x => x.Username == user.Username).Id;
+            return _reservationDbContext.Users.First(x => x.UserName == user.UserName).Id;
         }
 
         public User? GetByFirstAndLastName(string firstName, string lastName)
@@ -55,7 +55,7 @@ namespace ReservationFI.Repositories.Repository
 
         public User? Login(string username, string password)
         {
-            _currentUser = _reservationDbContext.Users.SingleOrDefault(x => x.Username == username && x.UserPassword == password);
+            _currentUser = _reservationDbContext.Users.SingleOrDefault(x => x.UserName == username && x.UserPassword == password);
             return _currentUser;
         }
 
