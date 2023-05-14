@@ -14,11 +14,17 @@ namespace ReservationFI
         private readonly IServiceProvider _services;
         private readonly IReservationRepository _reservationRepository;
         private readonly IUserRepository _userRepository;
+
+        private readonly string[] _paths = { "..", "..", "..", "Reservations.json" };
+        private readonly string _filePath;
+
         public ResManager(IServiceProvider services)
         {
             _services = services;
             _reservationRepository = _services.GetRequiredService<IReservationRepository>();
             _userRepository = _services.GetRequiredService<IUserRepository>();
+            _filePath = Path.Combine(_paths);
+
             InitializeComponent();
         }
 
@@ -70,6 +76,21 @@ namespace ReservationFI
 
             dgReservations.Columns[8].HeaderText = "USER";
             dgReservations.Columns[9].HeaderText = "";
+
+            foreach (DataGridViewRow row in dgReservations.Rows)
+            {
+                Reservation res = (Reservation)row.DataBoundItem;
+
+                DateTime resDate = DateTime.ParseExact(res.StartDate, "dd/MM/yyyy", null);
+                if (resDate < DateTime.Now)
+                {
+                    row.DefaultCellStyle.BackColor = Color.LightGray;
+                }
+                else
+                {
+                    row.DefaultCellStyle.BackColor = Color.LightGreen;
+                }
+            }
         }
 
         private void btnDeleteRes_Click(object sender, EventArgs e)
@@ -95,19 +116,13 @@ namespace ReservationFI
 
             var reservations = (List<Reservation>)dgReservations.DataSource;
 
-            string fileName = "reservations.json";
-
-            string? executableLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-
-            string filePath = Path.Combine(executableLocation!, fileName);
-
             var options1 = new JsonSerializerOptions
             {
                 Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
                 WriteIndented = true
             };
 
-            await using FileStream createStream = File.Create(filePath);
+            await using FileStream createStream = File.Create(_filePath);
 
             await JsonSerializer.SerializeAsync(createStream, reservations, options1);
 
