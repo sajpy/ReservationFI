@@ -33,7 +33,7 @@ namespace ReservationFI
             {
                 User? user = _userRepository.Login(tbUsername.Text, tbPassword.Text);
 
-                if(user == null)
+                if (user == null)
                 {
                     tbError.Text = "Username or password is incorrect";
                 }

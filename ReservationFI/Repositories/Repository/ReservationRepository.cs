@@ -96,7 +96,7 @@ namespace ReservationFI.Repositories.Repository
         public List<Reservation> GetAllReservationsWithRooms()
         {
             return _reservationDbContext.Reservations
-                .Join(_reservationDbContext.Rooms, r => r.RoomId, ro => ro.Id, (r, ro) => new Reservation 
+                .Join(_reservationDbContext.Rooms, r => r.RoomId, ro => ro.Id, (r, ro) => new Reservation
                 {
                     Id = r.Id,
                     RoomId = r.RoomId,

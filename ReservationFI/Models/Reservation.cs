@@ -1,12 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Runtime.Serialization;
 
 namespace ReservationFI.Models
 {
     public class Reservation
     {
-        // reservation has a id, room in which the reservation is made, teacher who made the reservation, start date, start time and end time
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
@@ -27,8 +25,6 @@ namespace ReservationFI.Models
         public string UserFirstName { get; set; }
         [NotMapped]
         public string UserLastName { get; set; }
-
-        //public List<Student> Students { get; set; }
 
     }
 }

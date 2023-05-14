@@ -1,10 +1,8 @@
 ﻿using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 
 namespace ReservationFI.Models
 {
-
     public static class Times
     {
         public enum TimesEnum
@@ -42,6 +40,4 @@ namespace ReservationFI.Models
             return GenericEnum.ToString();
         }
     }
-
-
 }

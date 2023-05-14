@@ -6,10 +6,8 @@ namespace ReservationFI
 {
     public partial class Register : Form
     {
-
         private readonly IServiceProvider _services;
         private readonly IUserRepository _userRepository;
-
 
         public Register(IServiceProvider services)
         {
@@ -54,9 +52,6 @@ namespace ReservationFI
 
                     else
                     {
-
-                        //create a user
-
                         User user = new()
                         {
                             FirstName = tbFirstName.Text,
@@ -64,8 +59,6 @@ namespace ReservationFI
                             UserName = tbUsername.Text,
                             UserPassword = tbPassword.Text,
                             IsAdmin = false
-                            //IsTeacher = chbTeacher.Checked,
-                            //IsStudent = chbStudent.Checked
                         };
 
                         _userRepository.Add(user);
@@ -75,7 +68,6 @@ namespace ReservationFI
                     }
                 }
             }
-
         }
 
         private void lblClose_Click(object sender, EventArgs e)

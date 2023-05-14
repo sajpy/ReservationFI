@@ -38,9 +38,6 @@ namespace ReservationFI
             btnConfirmRes.Text = "Reservation confirmed!";
             btnConfirmRes.BackColor = Color.Green;
             btnConfirmRes.Enabled = false;
-
-
-            //Close();
         }
     }
 }

@@ -1,4 +1,3 @@
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using ReservationFI.Repositories.IRepository;
 using ReservationFI.Repositories.Repository;

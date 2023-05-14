@@ -64,7 +64,7 @@
             // dpDate
             // 
             this.dpDate.CalendarFont = new System.Drawing.Font("Muni Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dpDate.CalendarForeColor = System.Drawing.Color.White;
+            this.dpDate.CalendarForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.dpDate.CalendarMonthBackground = System.Drawing.Color.White;
             this.dpDate.CalendarTitleForeColor = System.Drawing.SystemColors.HotTrack;
             this.dpDate.CalendarTrailingForeColor = System.Drawing.SystemColors.HotTrack;

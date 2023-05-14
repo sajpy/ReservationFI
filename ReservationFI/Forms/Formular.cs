@@ -16,7 +16,7 @@ namespace ReservationFI
         public Formular(IServiceProvider services)
         {
             _services = services;
-            
+
             _reservationRepository = _services.GetRequiredService<IReservationRepository>();
             _userRepository = _services.GetRequiredService<IUserRepository>();
             _roomRepository = _services.GetRequiredService<IRoomRepository>();
@@ -41,7 +41,7 @@ namespace ReservationFI
 
         private void Formular_Load(object sender, EventArgs e)
         {
-            dpDate.MinDate= DateTime.Now;
+            dpDate.MinDate = DateTime.Now;
 
             cbStartingAt.Enabled = true;
             cbEndingAt.Enabled = false;
@@ -75,7 +75,7 @@ namespace ReservationFI
         private void btnCreateRes_Click(object sender, EventArgs e)
         {
             tbError.ForeColor = Color.Red;
-            
+
             if (cbRooms.SelectedItem == null || cbStartingAt.SelectedItem == null || cbEndingAt.SelectedItem == null)
             {
                 tbError.Visible = true;
