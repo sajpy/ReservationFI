@@ -25,6 +25,5 @@ namespace ReservationFI.Models
         public string UserFirstName { get; set; }
         [NotMapped]
         public string UserLastName { get; set; }
-
     }
 }

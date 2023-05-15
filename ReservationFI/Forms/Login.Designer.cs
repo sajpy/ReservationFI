@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.tbUsername = new System.Windows.Forms.TextBox();
@@ -204,7 +205,7 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::ReservationFI.Properties.Resources.user_logo1;
+            this.pictureBox2.Image = global::ReservationFI.Properties.Resources.user_logo;
             this.pictureBox2.Location = new System.Drawing.Point(87, 179);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pictureBox2.Name = "pictureBox2";
@@ -235,6 +236,7 @@
             this.Controls.Add(this.pictureBox2);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

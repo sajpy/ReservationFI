@@ -30,17 +30,6 @@ namespace ReservationFI.Repositories.Repository
             _reservationDbContext.SaveChanges();
         }
 
-
-        public IEnumerable<Reservation> GetAll()
-        {
-            return _reservationDbContext.Reservations.ToList();
-        }
-
-        public void Update(Reservation reservation)
-        {
-            throw new NotImplementedException();
-        }
-
         public List<string> GetFreeTimes(string date, string roomName)
         {
             int roomId = _reservationDbContext.Rooms.Where(x => x.RoomName == roomName).First().Id;
@@ -93,20 +82,5 @@ namespace ReservationFI.Repositories.Repository
             return GetAllReservations().Where(x => x.UserId == user.Id).ToList();
         }
 
-        public List<Reservation> GetAllReservationsWithRooms()
-        {
-            return _reservationDbContext.Reservations
-                .Join(_reservationDbContext.Rooms, r => r.RoomId, ro => ro.Id, (r, ro) => new Reservation
-                {
-                    Id = r.Id,
-                    RoomId = r.RoomId,
-                    RoomName = ro.RoomName,
-                    StartDate = r.StartDate,
-                    StartTime = r.StartTime,
-                    EndTime = r.EndTime
-                })
-
-                .ToList();
-        }
     }
 }

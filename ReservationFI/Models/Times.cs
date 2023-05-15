@@ -21,8 +21,6 @@ namespace ReservationFI.Models
             Eighteen = 18,
             [Description("20:00")]
             Twenty = 20
-
-
         }
 
         public static string GetDescription(this Enum GenericEnum)

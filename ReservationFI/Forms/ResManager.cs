@@ -41,7 +41,7 @@ namespace ReservationFI
 
         private void ResManager_Load(object sender, EventArgs e)
         {
-            tbError.Visible = false;
+            //tbError.Visible = false;
             User currentUser = _userRepository.GetCurrentUser();
 
             List<Reservation> reservations;

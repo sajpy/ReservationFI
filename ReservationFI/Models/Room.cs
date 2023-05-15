@@ -10,6 +10,5 @@ namespace ReservationFI.Models
         public int Id { get; set; }
         public string RoomName { get; set; }
         public int RoomCapacity { get; set; }
-
     }
 }

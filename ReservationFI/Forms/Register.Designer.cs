@@ -46,8 +46,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.chbTeacher = new System.Windows.Forms.CheckBox();
-            this.chbStudent = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
             this.tbLastName = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
@@ -175,7 +173,7 @@
             this.btnRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRegister.Font = new System.Drawing.Font("Muni Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnRegister.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnRegister.Location = new System.Drawing.Point(87, 603);
+            this.btnRegister.Location = new System.Drawing.Point(87, 575);
             this.btnRegister.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(350, 69);
@@ -190,7 +188,7 @@
             this.tbError.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbError.Font = new System.Drawing.Font("Muni Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.tbError.ForeColor = System.Drawing.Color.Red;
-            this.tbError.Location = new System.Drawing.Point(0, 572);
+            this.tbError.Location = new System.Drawing.Point(0, 544);
             this.tbError.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.tbError.Name = "tbError";
             this.tbError.ReadOnly = true;
@@ -263,7 +261,7 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::ReservationFI.Properties.Resources.user_logo1;
+            this.pictureBox2.Image = global::ReservationFI.Properties.Resources.user_logo;
             this.pictureBox2.Location = new System.Drawing.Point(87, 308);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pictureBox2.Name = "pictureBox2";
@@ -271,26 +269,6 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 15;
             this.pictureBox2.TabStop = false;
-            // 
-            // chbTeacher
-            // 
-            this.chbTeacher.AutoSize = true;
-            this.chbTeacher.Location = new System.Drawing.Point(145, 547);
-            this.chbTeacher.Name = "chbTeacher";
-            this.chbTeacher.Size = new System.Drawing.Size(76, 19);
-            this.chbTeacher.TabIndex = 35;
-            this.chbTeacher.Text = "TEACHER";
-            this.chbTeacher.UseVisualStyleBackColor = true;
-            // 
-            // chbStudent
-            // 
-            this.chbStudent.AutoSize = true;
-            this.chbStudent.Location = new System.Drawing.Point(295, 547);
-            this.chbStudent.Name = "chbStudent";
-            this.chbStudent.Size = new System.Drawing.Size(75, 19);
-            this.chbStudent.TabIndex = 36;
-            this.chbStudent.Text = "STUDENT";
-            this.chbStudent.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
@@ -325,7 +303,7 @@
             // 
             // pictureBox5
             // 
-            this.pictureBox5.Image = global::ReservationFI.Properties.Resources.user_logo1;
+            this.pictureBox5.Image = global::ReservationFI.Properties.Resources.user_logo;
             this.pictureBox5.Location = new System.Drawing.Point(87, 233);
             this.pictureBox5.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pictureBox5.Name = "pictureBox5";
@@ -367,7 +345,7 @@
             // 
             // pictureBox6
             // 
-            this.pictureBox6.Image = global::ReservationFI.Properties.Resources.user_logo1;
+            this.pictureBox6.Image = global::ReservationFI.Properties.Resources.user_logo;
             this.pictureBox6.Location = new System.Drawing.Point(87, 157);
             this.pictureBox6.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pictureBox6.Name = "pictureBox6";
@@ -381,7 +359,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(525, 697);
+            this.ClientSize = new System.Drawing.Size(525, 676);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.tbFirstName);
             this.Controls.Add(this.flowLayoutPanel6);
@@ -390,8 +368,6 @@
             this.Controls.Add(this.tbLastName);
             this.Controls.Add(this.flowLayoutPanel5);
             this.Controls.Add(this.pictureBox5);
-            this.Controls.Add(this.chbStudent);
-            this.Controls.Add(this.chbTeacher);
             this.Controls.Add(this.lblBack);
             this.Controls.Add(this.lblClose);
             this.Controls.Add(this.tbError);
@@ -446,8 +422,6 @@
         private System.Windows.Forms.Label lblClose;
         private System.Windows.Forms.Label lblBack;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
-        private CheckBox chbTeacher;
-        private CheckBox chbStudent;
         private Label label4;
         private TextBox tbLastName;
         private FlowLayoutPanel flowLayoutPanel5;
