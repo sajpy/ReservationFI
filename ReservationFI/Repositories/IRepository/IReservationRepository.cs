@@ -2,6 +2,9 @@
 
 namespace ReservationFI.Repositories.IRepository
 {
+    /// <summary>
+    /// Interface for the ReservationRepository, which is used to access the database.
+    /// </summary>
     public interface IReservationRepository
     {
         void Add(Reservation reservation);

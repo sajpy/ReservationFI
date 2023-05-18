@@ -3,6 +3,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ReservationFI.Models
 {
+    /// <summary>
+    /// Class representing a Reservation of a Room by a User
+    /// </summary>
     public class Reservation
     {
         [Key]

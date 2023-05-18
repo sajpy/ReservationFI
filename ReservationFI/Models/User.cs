@@ -3,6 +3,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ReservationFI.Models
 {
+    /// <summary>
+    /// Class representing a User. UserPassword is not hashed, of course it would be in production.
+    /// </summary>
     public class User
     {
         [Key]

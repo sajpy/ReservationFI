@@ -30,7 +30,11 @@ namespace ReservationFI
         {
             Close();
         }
-
+        /// <summary>
+        /// Method for confirming the reservation and adding it to the database.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnConfirmRes_Click(object sender, EventArgs e)
         {
             _reservationRepository.Add(_reservation);

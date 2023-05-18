@@ -3,6 +3,9 @@ using ReservationFI.Models;
 
 namespace ReservationFI
 {
+    /// <summary>
+    /// Class representing the database context for the ReservationFI application.
+    /// </summary>
     public class ReservationDbContext : DbContext
     {
         public DbSet<Reservation> Reservations { get; set; }

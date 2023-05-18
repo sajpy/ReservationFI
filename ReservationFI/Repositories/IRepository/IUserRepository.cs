@@ -3,6 +3,9 @@
 
 namespace ReservationFI.Repositories.IRepository
 {
+    /// <summary>
+    /// Interface for the UserRepository, which is used to access the database.
+    /// </summary>
     public interface IUserRepository
     {
         void Add(User user);

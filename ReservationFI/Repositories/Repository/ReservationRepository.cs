@@ -5,6 +5,9 @@ using System.Collections;
 
 namespace ReservationFI.Repositories.Repository
 {
+    /// <summary>
+    /// Repository for the Reservation model, which is used to access the database.
+    /// </summary>
     public class ReservationRepository : IReservationRepository
     {
         private readonly ReservationDbContext _reservationDbContext;
@@ -13,11 +16,20 @@ namespace ReservationFI.Repositories.Repository
             _reservationDbContext = reservationDbContext;
         }
 
+        /// <summary>
+        /// Method to add a reservation to the database.
+        /// </summary>
+        /// <param name="reservation"></param>
         public void Add(Reservation reservation)
         {
             _reservationDbContext.Reservations.Add(reservation);
             _reservationDbContext.SaveChanges();
         }
+
+        /// <summary>
+        /// Method to delete a reservation from the database.
+        /// </summary>
+        /// <param name="reservation"></param>
         public void Delete(Reservation reservation)
         {
             var existingReservation = _reservationDbContext.Reservations.Find(reservation.Id);
@@ -30,6 +42,11 @@ namespace ReservationFI.Repositories.Repository
             _reservationDbContext.SaveChanges();
         }
 
+        /// <summary>
+        /// Method to get all free times for a specific date and room.
+        /// </summary>
+        /// <param name="date">date</param>
+        /// <param name="roomName">room</param>
         public List<string> GetFreeTimes(string date, string roomName)
         {
             int roomId = _reservationDbContext.Rooms.Where(x => x.RoomName == roomName).First().Id;
@@ -49,6 +66,9 @@ namespace ReservationFI.Repositories.Repository
             return freeTimes;
         }
 
+        /// <summary>
+        /// Method to get all reservations from the database with the room name and user name.
+        /// </summary>
         public List<Reservation> GetAllReservations()
         {
             var reservationsWithRooms = _reservationDbContext.Reservations
@@ -77,6 +97,10 @@ namespace ReservationFI.Repositories.Repository
 
         }
 
+        /// <summary>
+        /// Method to get all reservations from the database for a specific user.
+        /// </summary>
+        /// <param name="user">user</param>
         public List<Reservation> GetAllReservationsForUser(User user)
         {
             return GetAllReservations().Where(x => x.UserId == user.Id).ToList();

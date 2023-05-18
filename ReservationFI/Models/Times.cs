@@ -3,6 +3,9 @@ using System.Reflection;
 
 namespace ReservationFI.Models
 {
+    /// <summary>
+    /// Class representing the times of the day that a room can be reserved
+    /// </summary>
     public static class Times
     {
         public enum TimesEnum
@@ -23,16 +26,20 @@ namespace ReservationFI.Models
             Twenty = 20
         }
 
+        /// <summary>
+        /// Method needed to get the description of the enum 
+        /// </summary>
+        /// <param name="GenericEnum">enum</param>
         public static string GetDescription(this Enum GenericEnum)
         {
             Type genericEnumType = GenericEnum.GetType();
             MemberInfo[] memberInfo = genericEnumType.GetMember(GenericEnum.ToString());
             if (memberInfo != null && memberInfo.Length > 0)
             {
-                var _Attribs = memberInfo[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
-                if (_Attribs != null && _Attribs.Count() > 0)
+                var attributes = memberInfo[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
+                if (attributes != null && attributes.Count() > 0)
                 {
-                    return ((DescriptionAttribute)_Attribs.ElementAt(0)).Description;
+                    return ((DescriptionAttribute)attributes.ElementAt(0)).Description;
                 }
             }
             return GenericEnum.ToString();

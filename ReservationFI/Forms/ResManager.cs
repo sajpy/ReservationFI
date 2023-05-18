@@ -39,14 +39,20 @@ namespace ReservationFI
             createOrManage.Show();
         }
 
+        /// <summary>
+        /// Method for loading the reservations from the database. 
+        /// Also checks if the user is an admin or not, and displays the reservations accordingly.
+        /// Reservations from the past are displayed with different colors.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ResManager_Load(object sender, EventArgs e)
         {
-            //tbError.Visible = false;
-            User currentUser = _userRepository.GetCurrentUser();
+            User? currentUser = _userRepository.GetCurrentUser();
 
             List<Reservation> reservations;
 
-            if (currentUser.IsAdmin)
+            if (currentUser!.IsAdmin)
             {
                 reservations = _reservationRepository.GetAllReservations();
             }
@@ -90,6 +96,11 @@ namespace ReservationFI
             }
         }
 
+        /// <summary>
+        /// Method for deleting the selected reservation/s from the database.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnDeleteRes_Click(object sender, EventArgs e)
         {
             tbError.Visible = true;
@@ -106,7 +117,11 @@ namespace ReservationFI
             this.ResManager_Load(this, e);
         }
 
-
+        /// <summary>
+        /// Method for exporting the reservations to a JSON file.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void btnExport_Click(object sender, EventArgs e)
         {
             tbError.Visible = true;

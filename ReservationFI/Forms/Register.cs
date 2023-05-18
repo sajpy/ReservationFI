@@ -26,6 +26,12 @@ namespace ReservationFI
 
         }
 
+        /// <summary>
+        /// Method for registering a new user.
+        /// Validates the input and checks if the user already exists.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnRegister_Click(object sender, EventArgs e)
         {
 

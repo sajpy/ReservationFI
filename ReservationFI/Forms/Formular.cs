@@ -38,7 +38,11 @@ namespace ReservationFI
         {
             Close();
         }
-
+        /// <summary>
+        /// Method for initializing the form. Configuring the date picker, and the combo boxes.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Formular_Load(object sender, EventArgs e)
         {
             dpDate.MinDate = DateTime.Now;
@@ -52,6 +56,11 @@ namespace ReservationFI
             cbRooms.DataSource = _roomRepository.GetAllRooms().Select(x => x.RoomName).ToList();
         }
 
+        /// <summary>
+        /// Method for updating the combo boxes with times.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dpDate_ValueChanged(object sender, EventArgs e)
         {
             dpDate.ValueChanged -= dpDate_ValueChanged;
@@ -65,6 +74,11 @@ namespace ReservationFI
             }
         }
 
+        /// <summary>
+        /// A bit of magic here, not every action, like scrolling through the date picker, should trigger the event.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dpDate_CloseUp(object sender, EventArgs e)
         {
             dpDate.ValueChanged += dpDate_ValueChanged;
@@ -72,6 +86,11 @@ namespace ReservationFI
             dpDate_ValueChanged(sender, e);
         }
 
+        /// <summary>
+        /// Method for creating a reservation. Checks if the fields are filled, and if the reservation is valid.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCreateRes_Click(object sender, EventArgs e)
         {
             tbError.ForeColor = Color.Red;
@@ -110,6 +129,11 @@ namespace ReservationFI
             }
         }
 
+        /// <summary>
+        /// Method for updating the ending time combo box, based on the starting time.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cbStartingAt_SelectedIndexChanged(object sender, EventArgs e)
         {
             cbEndingAt.Items.Clear();
@@ -128,6 +152,9 @@ namespace ReservationFI
             cbEndingAt.Enabled = false;
         }
 
+        /// <summary>
+        /// Method for updating the starting time combo box, based on what date and room is selected and if there are any free reservations.
+        /// </summary>
         private void UpdatingCheckboxes()
         {
             cbStartingAt.Items.Clear();

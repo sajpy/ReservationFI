@@ -20,7 +20,12 @@ namespace ReservationFI
         {
             Close();
         }
-
+        /// <summary>
+        /// Method for logging in a user.
+        /// Validates the input and checks if the user exists.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnLogin_Click(object sender, EventArgs e)
         {
             tbError.Visible = true;
