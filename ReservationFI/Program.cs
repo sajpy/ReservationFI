@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using ReservationFI.Repositories.IRepository;
 using ReservationFI.Repositories.Repository;
@@ -18,8 +19,21 @@ namespace ReservationFI
             services.AddSingleton<IRoomRepository, RoomRepository>();
             services.AddSingleton<IReservationRepository, ReservationRepository>();
 
-            var login = new Login(services.BuildServiceProvider());
+            var serviceProvider = services.BuildServiceProvider();
 
+            using (var scope = serviceProvider.CreateScope())
+            {
+                var dbContext = scope.ServiceProvider.GetRequiredService<ReservationDbContext>();
+                dbContext.Database.EnsureCreated(); // Ensure the database is created
+
+                // Apply any pending migrations
+                dbContext.Database.Migrate();
+
+                var seeder = new Seeder(dbContext);
+                seeder.SeedData();
+            }
+
+            var login = new Login(services.BuildServiceProvider());
             Application.Run(login);
 
         }
